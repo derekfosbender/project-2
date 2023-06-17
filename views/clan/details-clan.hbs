@@ -1,0 +1,20 @@
+<center>
+<body id="bimg2"></body>
+
+<h1>Clan Details</h1>
+
+<img class="sketchy" src="{{clan.img}}"style="width: 600px">
+<br>
+User: {{account.user.username}}
+<br>
+<button>Purchase Clan: {{theClan.price}}</button>
+<br>
+<br>
+<form action="/clan/delete/{{theClan._id}}" method="POST">
+<button>Delete Clan Post</button>
+</form>
+<br>
+<a href="/clan/{{clan._id}}/edit">Edit Clan</a>
+<br>
+<a href="/clan">All Clans</a>
+</center>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>{{appTitle}}</title>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+   </head>
+
+   <body>
+
+      <nav>
+        {{!-- <a href="/account/new">Add Account</a>
+        <a href="/account">All Accounts</a>
+        <a href="/clan/new">Add Clan</a>
+        <a href="/clan">All Clans</a>
+        <a href="/signup">Signup</a> --}}
+        {{#if theUserObject}}
+        <form style="display:inline" action="/logout" method="POST"><button>Logout</button></form>
+        {{else}}
+        {{!-- <a href="/">Login</a> --}}
+        {{/if}}
+
+    </nav>
+
+   <script src="/js/script.js"></script>
+   
+      {{{body}}}
+
+      
+   </body>
+
+</html>

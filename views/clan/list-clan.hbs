@@ -1,0 +1,21 @@
+<body id="bimg2"></body>
+
+<div class="topnav">
+<a href="/account">Accounts for Sale</a>
+<a href="/account/new">List Account</a>
+   <a href="/clan/new">List Clan</a>
+</div>
+
+<h1>Clans</h1>
+
+{{#each clan}}
+<div class="gallery">
+<img src="{{img}}" style="width: 360px">
+<br>
+<div class="topnav">
+<a href="/clan/{{this._id}}">{{name}}</a>
+</div>
+<br>
+<h3>{{price}}</h3>
+</div>
+{{/each}}

@@ -1,0 +1,40 @@
+<body id="bimg2"></body>
+
+<h1>Edit Clan Info</h1>
+
+<form action="/clan/{{theClan._id}}/update" method="POST">
+
+<div>
+    <br>Name:<br>
+    <input type="text" name="theName" value="{{theClan.name}}">
+</div>
+
+<div>
+    <br>Price:<br>
+    <input type="text" name="thePrice" value="{{theClan.price}}">
+</div>
+
+<div>
+    <br>Level:<br>
+    <input type="text" name="theLevel" value="{{theClan.level}}">
+</div>
+
+<div>
+    <br>League:<br>
+    <input type="text" name="theLeague" value="{{theClan.league}}">
+</div>
+
+<div>
+    <br>Warlog:<br>
+    <input type="text" name="theWarlog" value="{{theClan.warlog}}">
+</div>
+
+<div>
+    <br>Image:<br>
+    <input type="text" name="img" value="{{theClan.Image}}">
+</div>
+
+<button>Update Clan</button>
+
+</form>
+

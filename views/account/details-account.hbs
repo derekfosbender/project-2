@@ -1,0 +1,28 @@
+<center>
+<body id="bimg2"></body>
+
+<h1>Account Details</h1>
+
+
+<img class="sketchy" src="{{account.img}}"style="width: 600px">
+<br>
+User: {{account.user.username}}
+<br>
+<h1>{{account.description}}</h1>
+<h2>Level: {{account.level}}</h2>
+<h2>Gems: {{account.gems}} // Sceneries: {{account.sceneries}}</h2>
+
+<h2>Builderhall: {{account.builderhall}} // Skins: {{account.skins}}</h2>
+<br>
+<button>Purchase Account: {{account.price}}</button>
+<br>
+<br>
+<br>
+<form action="/account/delete/{{account._id}}" method="POST">
+<button>Delete Account Post</button>
+</form>
+<br>
+<a href="/account/{{account._id}}/edit">Edit Account</a>
+<br>
+<a href="/account">Accounts for Sale</a>
+</center>
