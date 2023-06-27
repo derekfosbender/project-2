@@ -1,3 +1,10 @@
+
+<div class="topnav">
+<a href="/account">Accounts for Sale</a>
+   <a href="/clan">Clans for Sale</a>
+   <a href="/account/{{account._id}}/edit">Edit Account</a>
+<a href="/account/payment/{{account._id}}">Purchase Account</a>
+</div>
 <center>
 <body id="bimg2"></body>
 
@@ -6,7 +13,7 @@
 
 <img class="sketchy" src="{{account.img}}"style="width: 600px">
 <br>
-User: {{account.user.username}}
+{{!-- User: {{account.user._id}} --}}
 <br>
 <h1>{{account.description}}</h1>
 <h2>Level: {{account.level}}</h2>
@@ -14,15 +21,14 @@ User: {{account.user.username}}
 
 <h2>Builderhall: {{account.builderhall}} // Skins: {{account.skins}}</h2>
 <br>
-<button>Purchase Account: {{account.price}}</button>
-<br>
-<br>
-<br>
-<form action="/account/delete/{{account._id}}" method="POST">
+ <form action="/account/delete/{{account._id}}" method="POST">
 <button>Delete Account Post</button>
 </form>
 <br>
-<a href="/account/{{account._id}}/edit">Edit Account</a>
 <br>
-<a href="/account">Accounts for Sale</a>
+<br>
+
+<br>
+
+<br>
 </center>

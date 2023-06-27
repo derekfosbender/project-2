@@ -23,6 +23,7 @@ router.post("/signup", (req, res, next)=>{
         User.create({username:username,email:email, password: hashedPassword})
         .then(()=>{
             res.redirect("/");
+            req.flash("success","User Successfully Created")
         })
     })
     .catch(error => console.log(error));

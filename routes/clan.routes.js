@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Clan = require("../models/Clan");
 const isLoggedIn = require("../utils/isLoggedIn");
-
+const PUBLISHABLE_KEY = process.env.PUBLISHABLE_KEY;
 
 router.get("/clan/new", isLoggedIn, (req, res)=>{
     res.render("clan/new-clan");
@@ -41,9 +41,9 @@ router.get("/clan/:id", (req,res)=>{
   })
 })
 
-router.post("/clan/delete/:clanID", (req,res)=>{
-  Clan.findByIdAndRemove(req.params.clanID)
-  .then(()=>{
+router.post("/clan/delete/:id", (req,res)=>{
+  Clan.findById(req.params.id)
+  .then((theClan)=>{
     const aUser = String(theClan.user) === req.session.currentUser._id;
     const aAdmin = req.session.currentUser === req.session.currentUser.admin;
 
@@ -51,8 +51,12 @@ router.post("/clan/delete/:clanID", (req,res)=>{
       req.flash("error", "You are not authorized to delete this account listing");
       return res.redirect(`/clan/${req.params.id}`);
   }
+  Clan.findByIdAndRemove(req.params.id)
+  .then(()=>{
+    req.flash("success", "Clan deleted")
     res.redirect("/clan");
   })
+})
 })
 
 router.get("/clan/:id/edit", (req,res)=>{
@@ -70,8 +74,8 @@ router.get("/clan/:id/edit", (req,res)=>{
   })
 })
 
-router.post("/clan/:clanID/update", (req,res)=>{
-  Clan.findByIdAndUpdate(req.params.clanID,{
+router.post("/clan/:id/update", (req,res)=>{
+  Clan.findByIdAndUpdate(req.params.id,{
     price: req.body.thePrice,
     name: req.body.theName,
     level: req.body.theLevel,
@@ -80,9 +84,36 @@ router.post("/clan/:clanID/update", (req,res)=>{
     img: req.body.img
 
   }).then(()=>{
-    res.redirect("/clan/"+req.params.clanID)
+    res.redirect(`/clan/${req.params.id}`)
   })
   
   })
 
+  router.get('/clan/payment/:id', (req,res) => {
+    res.render('clan/payment-clan',{
+        key:PUBLISHABLE_KEY 
+    })
+})
+
+router.post('/payment', (req,res) =>{
+    return stripe.create({
+            amount:70.00,
+            description:"Clan",
+            currency: 'USD',
+            customer: customer.id
+        }).then((res)=>{
+          res.redirect("/clan");
+     })
+     .then((charge) =>{
+          console.log(charge)
+          res.send("success")
+      })
+      .catch((err) =>{
+          res.send(err)
+      })
+    })
+
+    router.get('/payment', (req,res) => {
+      res.redirect("/clan");
+    })
 module.exports = router;

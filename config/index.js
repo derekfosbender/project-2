@@ -19,11 +19,20 @@ const path = require("path");
 
 var flash = require('connect-flash');
 
+
+
+const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
-  app.use(flash());
+  // app.use(
+  //   cors({
+  //     origin: [FRONTEND_URL]
+  //   })
+  // );
   
+
   app.use(logger("dev"));
 
   // To have access to `body` property in the request
@@ -31,7 +40,7 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 
-  
+  app.use(flash());
 
   // Normalizes the path to the views folder
   app.set("views", path.join(__dirname, "..", "views"));

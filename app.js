@@ -12,6 +12,7 @@ const mongoose = require('mongoose')
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const path = require("path");
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -22,7 +23,7 @@ mongoose
 
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
-const hbs = require("hbs");
+const hbs = require('hbs');
 
 const app = express();
 
@@ -33,7 +34,7 @@ require("./config")(app);
 const capitalize = require("./utils/capitalize");
 const projectName = "project";
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalize(projectName)}`;
 
  
 app.set('views', __dirname + '/views');
@@ -60,7 +61,7 @@ app.set('trust proxy', 1);
         maxAge: 60000
       },
       store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/project'
+        mongoUrl: process.env.MONGODB_URI
  
       })
     })

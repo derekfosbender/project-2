@@ -17,13 +17,25 @@
         <a href="/clan/new">Add Clan</a>
         <a href="/clan">All Clans</a>
         <a href="/signup">Signup</a> --}}
-        {{#if theUserObject}}
+        {{#if user}}
         <form style="display:inline" action="/logout" method="POST"><button>Logout</button></form>
         {{else}}
         {{!-- <a href="/">Login</a> --}}
         {{/if}}
 
     </nav>
+
+    {{#if errorMessage}}
+    <div style= "background-color: #d13838">
+      {{errorMessage}}
+    </div>
+   {{/if}}
+
+    {{#if successMessage}}
+     <div style="background-color: #42f557">
+      {{successMessage}}
+     </div>
+    {{/if}}
 
    <script src="/js/script.js"></script>
    

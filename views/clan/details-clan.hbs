@@ -1,3 +1,9 @@
+<div class="topnav">
+<a href="/account">Accounts for Sale</a>
+   <a href="/clan">Clans for Sale</a>
+   <a href="/clan/{{clan._id}}/edit">Edit Clan</a>
+<a href="/clan/payment/{{clan._id}}">Purchase Clan</a>
+</div>
 <center>
 <body id="bimg2"></body>
 
@@ -5,16 +11,18 @@
 
 <img class="sketchy" src="{{clan.img}}"style="width: 600px">
 <br>
-User: {{account.user.username}}
-<br>
-<button>Purchase Clan: {{theClan.price}}</button>
+{{!-- User: {{account.user.username}} --}}
 <br>
 <br>
-<form action="/clan/delete/{{theClan._id}}" method="POST">
+<h1>Name: {{clan.name}} // Level: {{clan.level}}</h2>
+<br>
+<h2>League: {{clan.league}} // Warlog: {{clan.warlog}}</h2>
+<br>
+<h2></h2>
+<br>
+<form action="/clan/delete/{{clan._id}}" method="POST">
 <button>Delete Clan Post</button>
 </form>
 <br>
-<a href="/clan/{{clan._id}}/edit">Edit Clan</a>
 <br>
-<a href="/clan">All Clans</a>
 </center>
